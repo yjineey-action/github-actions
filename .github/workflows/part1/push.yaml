@@ -1,4 +1,4 @@
-name: push-workflow 1
+name: push-workflow 2
 on: push # push 이벤트에서 workflow를 트리거 하겠다
 
 jobs: # 꼭 들어가야하는 키워드
