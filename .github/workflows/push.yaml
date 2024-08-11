@@ -6,4 +6,4 @@ jobs: # 꼭 들어가야하는 키워드
     runs-on: ubuntu-latest # push-job이 우분트에서 실행된다
     steps:
       - name: step1 # name 생략가능
-      run: echo hello world 
+        run: echo hello world
