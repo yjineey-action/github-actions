@@ -1,5 +1,7 @@
 name: pull-request-workflow
-on: push
+on:
+  pull_request:
+    types: [opened] # pull_request가 생성된 시점에만 (그렇지않으면 pr 요청할때마다)
 
 jobs:
   pull-request-job:
