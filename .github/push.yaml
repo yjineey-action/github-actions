@@ -1,0 +1,9 @@
+name: push-workflow
+on: push # push 이벤트에서 workflow를 트리거 하겠다
+
+jobs: # 꼭 들어가야하는 키워드
+  push-job:
+    runs-on: ubuntu-latest # push-job이 우분트에서 실행된다
+    steps:
+      - name: step1 # name 생략가능
+      run: echo hello world 
