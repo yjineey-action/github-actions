@@ -1,0 +1,31 @@
+name: needs
+on: push
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: job1
+        run: echo "job1 done"
+
+  job2:
+    runs-on: ubuntu-latest
+    needs: [job1]
+    steps:
+      - name: job2
+        run: echo "job2 done"
+
+  job3:
+    runs-on: ubuntu-latest
+    steps:
+      - name: job3
+        run: |
+          echo "job3 failed"
+          exit 1 # 강제 실패
+
+  job4: # job3이 실패하므로 실행 안됨
+    runs-on: ubuntu-latest
+    needs: [job3]
+    steps:
+      - name: job4
+        run: echo "job4 done"
