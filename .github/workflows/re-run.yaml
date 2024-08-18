@@ -1,4 +1,4 @@
-name: re0run
+name: re-run
 on: push
 
 jobs:
