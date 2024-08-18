@@ -1,6 +1,6 @@
 name: workflow-dispatch
-on: # input 트리거
-  workflow_dispatch:
+on:
+  workflow_dispatch: # input 트리거 옵션
     inputs: # inputs 키워드 사용
       name:
         description: 'set name' # 설명
