@@ -1,0 +1,11 @@
+name: branch-filter
+on:
+  push:
+    branches: ['dev'] # 해당브랜치 push 이벤트 발생시에만 실행
+
+jobs:
+  branch-filter:
+  runs-on: ubuntu-latest
+  steps:
+    - name: echo
+      run: echo hello
