@@ -1,0 +1,25 @@
+name: output
+on: push
+
+jobs:
+  create-output:
+    runs-on: ubuntu-latest
+    outputs: # job level output, 다른 레벨의 job 에서도 test를 사용할 수 있도록 (get-output에서도 사용)
+      test: ${{ steps.check-output.outputs.test }}
+    steps:
+      - name: echo output
+        id: check-output # key가 test로 같이 사용될 수 있다, 고유한 id 사용
+        run:
+          | # step level output, key는 test 이고 value 는 hello 인 output 생성
+          echo "test=hello" >> "$GITHUB_OUTPUT"
+      - name: check output
+        run: | # output 출력
+          echo ${{ steps.check-output.outputs.test }}
+
+  get-output:
+    needs: [create-output]
+    runs-on: ubuntu-latest
+    steps:
+      - name: get output
+        run: | # output 출력, job에서 생성한 output 출력
+          echo ${{ needs.create-output.outputs.test }}
