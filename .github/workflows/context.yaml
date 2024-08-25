@@ -1,0 +1,9 @@
+name: context
+on: workflow_dispatch # trigger 방식 선택 : 수동
+
+jobs:
+  context:
+    runs-on: ubuntu-latest
+    steps:
+      - name: github context
+        run: echo '${{ toJSON(github) }}' #object 객체를 json 문자열로 변경

@@ -1,5 +1,5 @@
 name: checkout
-on: workflow_dispatch
+on: workflow_dispatch # 수동 트리거
 
 jobs:
   no-checkout:
@@ -12,6 +12,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: use checkout action
-        uses: actions/checkout@v4 # checkout 호출했는지 차이
+        uses: actions/checkout@v4 # checkout action 을 사용해서 git repository 호출
       - name: check file list
         run: cat README.md # readme 파일을 읽어 출력
