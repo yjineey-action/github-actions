@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: echo
-        uses: echo hello-world > hello.txt # 파일 생성
+        run: echo hello-world > hello.txt # 파일 생성
       - name: upload artifact
         uses: actions/upload-artifact@v3 #artifact upload
         with:
