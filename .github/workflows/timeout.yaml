@@ -1,0 +1,19 @@
+name: timeout
+on: push
+
+jobs:
+  timeout:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2 # job level 정의 (2분후 중단된다)
+    steps:
+      - name: loop
+        run: | # 무한루프 실행
+          count=0
+          while true; do
+            echo "seconds: $count"
+            count=$((count+1))
+            sleep 1
+            done
+        timeout-minutes: 1 # step level 정의 / 첫번째 step 이 1분안에 완료되지 않으면 두번째 스텝도 실행되지 않고 종료
+      - name: echo # 첫번째 step 이 실패하게 되므로 두번째 스텝은 실패한다
+        run: echo hello world
