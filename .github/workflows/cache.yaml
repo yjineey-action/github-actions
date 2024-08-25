@@ -1,0 +1,30 @@
+name: cache
+on:
+  push:
+    paths:
+      - 'my-app/**'
+
+jobs:
+  cache:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout # 체크아웃
+        uses: actions/checkout@v4
+      - name: setup-node # 노트 18버전 install
+        uses: actions/setup-node@v3
+        with: node-versions:18
+      - name: Cache Node.js modules # cache action 사용
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm # 캐싱할 경로, node.js 경로인 npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock/json') }} # 운영체제별 의존성 구분, 해당파일이 변경될 경우 새로운 캐시값
+          restore-keys: | # 캐시 복구를 위한 key
+            ${{ runner.os }}-node-
+      - name: Install dependencies #필요한 dependencies 실행
+        run: |
+          cd my-app
+          npm ci
+      - name: npm build # 빌드 실행 (처음엔 캐시가 없으므로 없다고 나옴)
+        run: |
+          cd my-app
+          npm run build
