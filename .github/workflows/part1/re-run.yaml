@@ -7,5 +7,5 @@ jobs:
     steps:
       - name: checkout # check out 액션 실행
         uses: actions/checkout@v4 # 해당 액션을 github에서 받아옴
-      - name: cat readme # cat reademe 실행
+      - name: cat readme # cat reademe 출력
         run: cat README.md # readme 파일을 읽어 출력

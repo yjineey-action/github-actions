@@ -1,0 +1,17 @@
+name: checkout
+on: workflow_dispatch
+
+jobs:
+  no-checkout:
+    runs-on: ubuntu-latest
+    steps:
+      - name: check file list
+        run: cat README.md # readme 파일을 읽어 출력
+
+  checkout:
+    runs-on: ubuntu-latest
+    steps:
+      - name: use checkout action
+        uses: actions/checkout@v4 # checkout 호출했는지 차이
+      - name: check file list
+        run: cat README.md # readme 파일을 읽어 출력
