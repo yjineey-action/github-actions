@@ -6,9 +6,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: echo
-        uses: echo hello-world > hello.txt
+        uses: echo hello-world > hello.txt # 파일 생성
       - name: upload artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v3 #artifact upload
         with:
           name: artifact-test
           path: ./hello.txt
+
+  download-artifact:
+    runs-on: ubuntu-latest
+    needs: [upload-artifact] # 해당 job이 실행 된 후에 실행
+    steps:
+      - name: download artifact
+        uses: actions/download-artifact@v3 #artifact download
+        with:
+          name: artifact-test
+          path: ./
+      - name: check
+        run: cat hello.txt
