@@ -18,7 +18,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: ~/.npm # 캐싱할 경로, node.js 경로인 npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock/json') }} # 운영체제별 의존성 구분, 해당파일이 변경될 경우 새로운 캐시값
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }} # 운영체제별 의존성 구분, 해당파일이 변경될 경우 새로운 캐시값
           restore-keys: | # 캐시 복구를 위한 key
             ${{ runner.os }}-node-
       - name: Install dependencies #필요한 dependencies 실행
