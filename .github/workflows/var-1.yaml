@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: check env
-        run: echo "LEVEL ${{ env.level }} # 출력값 : level: workflow
+        run: echo "LEVEL ${{ env.level }}" # 출력값 : level: workflow
 
   get-env-2:
     runs-on: ubuntu-latest
@@ -17,7 +17,7 @@ jobs:
       level: job
     steps:
       - name: check env
-        run: echo "LEVEL ${{ env.level }} # 출력값 : level: job
+        run: echo "LEVEL ${{ env.level }}" # 출력값 : level: job
 
   get-env-3:
     runs-on: ubuntu-latest
@@ -25,7 +25,7 @@ jobs:
       level: job
     steps:
       - name: check env
-        run: echo "LEVEL ${{ env.level }} # 출력값 : level: step
+        run: echo "LEVEL ${{ env.level }}" # 출력값 : level: step
         env: # step level env 구성
           level: step
 
@@ -37,4 +37,4 @@ jobs:
       - name: create env
         run: echo "levle=job" >> $GITHUB_ENV
       - name: check env
-        run: echo "LEVEL ${{ env.level }}
+        run: echo "LEVEL ${{ env.level }}"
