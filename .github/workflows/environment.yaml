@@ -9,3 +9,12 @@ jobs:
         run: | # 환경변수 사용 '|' (bar)
           echo ${{vars.level}} 
           echo ${{secrets.key}}
+
+  get-env-dev:
+    runs-on: ubuntu-latest
+    environment: dev
+    steps:
+      - name: check env & secret
+        run: |
+          echo ${{vars.level}} 
+          echo ${{secrets.key}}
