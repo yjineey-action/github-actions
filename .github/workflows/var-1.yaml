@@ -1,0 +1,40 @@
+name: var-1
+on: push
+
+env:
+  level: workflow # workflow level env 구성
+
+jobs:
+  get-env-1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: check env
+        run: echo "LEVEL ${{ env.level }} # 출력값 : level: workflow
+
+  get-env-2:
+    runs-on: ubuntu-latest
+    env: # job level env 구성
+      level: job
+    steps:
+      - name: check env
+        run: echo "LEVEL ${{ env.level }} # 출력값 : level: job
+
+  get-env-3:
+    runs-on: ubuntu-latest
+    env:
+      level: job
+    steps:
+      - name: check env
+        run: echo "LEVEL ${{ env.level }} # 출력값 : level: step
+        env: # step level env 구성
+          level: step
+
+  get-env:
+    runs-on: ubuntu-latest
+    env:
+      level: job
+    steps:
+      - name: create env
+        run: echo "levle=job" >> $GITHUB_ENV
+      - name: check env
+        run: echo "LEVEL ${{ env.level }}
