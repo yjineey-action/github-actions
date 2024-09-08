@@ -1,0 +1,11 @@
+name: environment
+on: push
+
+jobs:
+  get-env:
+    runs-on: ubuntu-latest
+    steps:
+      - name: check env & secret
+        run: | # 환경변수 사용 '|' (bar)
+          echo ${{vars.level}} 
+          echo ${{secrets.key}}
